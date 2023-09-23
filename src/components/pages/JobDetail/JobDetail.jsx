@@ -1,9 +1,14 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { saveJobs } from "../../../utils/localStorage";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const JobDetail = () => {
   const jobs = useLoaderData();
   const { jobId } = useParams();
   const {
+    id,
     job_description,
     job_responsibility,
     educational_requirements,
@@ -12,12 +17,18 @@ const JobDetail = () => {
     job_title,
     contact_information,
   } = jobs.find((job) => job.id == jobId);
+  const handelSaveJob = () => {
+    const save = saveJobs(id);
+    if (save) {
+      toast.success("Applied Successfully !");
+    } else {
+      toast.error("You have allready applied!");
+    }
+  };
   return (
     <div className="px-5 lg:px-0 py-10">
       <div className="flex justify-center items-center w-full h-80">
-        <div>
-            <img src="" alt="" />
-        </div>
+        
         <h1 className="text-3xl text-color-dark font-extrabold">Job Details</h1>
       </div>
       <div className="flex flex-col justify-center lg:flex-row  mt-10">
@@ -234,11 +245,15 @@ const JobDetail = () => {
               </div>
             </div>
           </div>
-          <button className="btn bg-gradient-to-br from-[#7E90FE] to-[#9873FF] rounded-lg mt-5 text-white w-full">
+          <button
+            className="btn bg-gradient-to-br from-[#7E90FE] to-[#9873FF] rounded-lg mt-5 text-white w-full"
+            onClick={handelSaveJob}
+          >
             Apply Now
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
