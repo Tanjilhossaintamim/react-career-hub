@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import "./job.css";
 import PropTypes from "prop-types";
 const Job = ({ job }) => {
   const {
+    id,
     logo,
     job_title,
     company_name,
@@ -74,9 +76,11 @@ const Job = ({ job }) => {
             <small>{salary}</small>
           </div>
         </div>
-        <button className="btn bg-gradient-to-br from-[#7E90FE] to-[#9873FF] rounded-lg text-white my-3">
-          View Details
-        </button>
+        <Link to={`/job/${id}`}>
+          <button className="btn bg-gradient-to-br from-[#7E90FE] to-[#9873FF] rounded-lg text-white my-3">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );
