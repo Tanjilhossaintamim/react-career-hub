@@ -52,7 +52,7 @@ const AppliedJob = () => {
         {displayedJobs.length > 0 ? (
           displayedJobs.map((job) => <SingelAppledJob key={job.id} job={job} />)
         ) : (
-          <p>No Applied Job</p>
+          <p className="text-4xl font-bold py-5">No Applied Job</p>
         )}
       </div>
     </section>

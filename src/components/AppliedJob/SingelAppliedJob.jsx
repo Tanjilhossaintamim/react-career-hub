@@ -10,10 +10,10 @@ const AppliedJob = ({ job }) => {
     location,
   } = job || {};
   return (
-    <div className="mb-10">
+    <div className="px-5 mt-5 md:px-0 mb-10">
       {/* container div  */}
       <div className="md:flex justify-between items-center">
-        <div className="flex">
+        <div className="md:flex">
           <div className="w-60 h-60 rounded flex justify-center items-center p-5 flex-shrink-0 category-div">
             <img src={logo} alt="" width={"100%"} />
           </div>
